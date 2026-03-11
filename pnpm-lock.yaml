@@ -201,6 +201,12 @@ importers:
         specifier: 'catalog:'
         version: 4.21.0
 
+  artifacts/hello-server:
+    dependencies:
+      express:
+        specifier: ^5
+        version: 5.2.1
+
   artifacts/mockup-sandbox:
     dependencies:
       '@hookform/resolvers':

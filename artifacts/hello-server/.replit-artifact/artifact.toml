@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Hello Server"
+version = "1.0.0"
+id = "artifacts/hello-server"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+localPort = 20822
+name = "web"
+paths = ["/"]
+
+[services.development]
+run = "pnpm --filter @workspace/hello-server run dev"
+
+[services.env]
+PORT = "20822"
+BASE_PATH = "/"
+
+[services.production]
+build = ["pnpm", "--filter", "@workspace/hello-server", "run", "build"]
+publicDir = "artifacts/hello-server/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
